@@ -138,6 +138,9 @@ apt update && apt upgrade
 # Install Python and Git
 apt install python python-pip git
 
+# Allow storage permission
+termux-setup-storage
+
 # Clone and setup
 git clone https://github.com/VritraSecz/LucidX.git
 cd LucidX
