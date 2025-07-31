@@ -10,8 +10,8 @@ import requests
 import signal
 from core.colors import *
 import os
+import json
 from core.banr import *
-#from core.config import *
 
 LAST_STYLE_FILE = "last_style.txt"
 LOG_FILE = "generation_log.txt"
@@ -74,20 +74,39 @@ def get_user_style():
         else:
             print(f"{RED}[!] Invalid choice. Try again.{RESET}")
 
+def get_api_key():
+    """Load API key from global config"""
+    config_path = Path.home() / ".config-vritrasecz/lucidx-config.json"
+    
+    if not config_path.exists():
+        print(f"{RED}[!] Config file not found: {config_path}{RESET}")
+        print(f"{WHITE}Please configure your API key using option [2] from the main menu.{RESET}")
+        return None
+    
+    try:
+        with open(config_path, "r") as f:
+            config = json.load(f)
+            api_key = config.get('API', '')
+            
+        if not api_key.strip():
+            print(f"{RED}[!] API key is empty in config file.{RESET}")
+            print(f"{WHITE}Please configure your API key using option [2] from the main menu.{RESET}")
+            return None
+            
+        return api_key
+        
+    except Exception as e:
+        print(f"{RED}[!] Error reading config file: {e}{RESET}")
+        return None
+
 def generate_image(prompt, output_path, seed, steps, style):
     from datetime import datetime
     import requests
-    from core.colors import GRAY, RED, RESET, QUOTE_BLUE  # assuming color constants here
+    from core.colors import GRAY, RED, RESET, QUOTE_BLUE
 
-    # Lazy import of API
-    try:
-        from core.config import API
-    except ImportError:
-        print(f"{RED}[!] Missing config file: core/config.py{RESET}")
-        return
-
-    if not API.strip():
-        print(f"{RED}[!] API key is missing in config.py. Please set it before generating images.{RESET}")
+    # Get API key from global config
+    API = get_api_key()
+    if not API:
         return
 
     global image_count

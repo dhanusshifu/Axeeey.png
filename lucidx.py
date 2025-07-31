@@ -10,6 +10,7 @@ from core.modulex import *
 from core.genx import *
 import os
 import signal
+import sys
 
 def handle_interrupt(sig, frame):
     print(f"\n{RED}[!] Interrupted by user. Exiting...{RESET}")
@@ -23,6 +24,66 @@ def handle_interrupt(sig, frame):
     lucid_exit()
     exit()
 signal.signal(signal.SIGINT, handle_interrupt)
+
+def show_version():
+    """Display version information"""
+    print(f"{GREEN}LucidX - AI-Powered Image Synthesis Engine{RESET}")
+    print(f"{WHITE}Version: {VALUE}1.0.4{RESET}")
+    print(f"{WHITE}Author: {VALUE}Alex @ VritraSec{RESET}")
+    print(f"{WHITE}GitHub: {VALUE}https://github.com/VritraSecz/LucidX{RESET}")
+    print(f"{WHITE}Platform: {VALUE}Linux, Termux (Android){RESET}")
+    print(f"{WHITE}Engine: {VALUE}Stability AI API + Python{RESET}")
+
+def show_help():
+    """Display help information"""
+    print(f"{GREEN}LucidX - AI-Powered Image Synthesis Engine{RESET}")
+    print(f"{WHITE}Usage: {VALUE}python lucidx.py [OPTION]{RESET}\n")
+    
+    print(f"{WHITE}OPTIONS:{RESET}")
+    print(f"{GREEN}  --help, -h     {WHITE}Show this help message and exit{RESET}")
+    print(f"{GREEN}  --version, -v  {WHITE}Show version information and exit{RESET}")
+    print(f"{GREEN}  (no arguments) {WHITE}Launch interactive menu{RESET}\n")
+    
+    print(f"{WHITE}DESCRIPTION:{RESET}")
+    print(f"{GRAY}  LucidX is an AI-powered image synthesis engine that leverages{RESET}")
+    print(f"{GRAY}  the Stability AI API to transform text prompts into stunning,{RESET}")
+    print(f"{GRAY}  high-resolution images with multiple artistic styles.{RESET}\n")
+    
+    print(f"{WHITE}EXAMPLES:{RESET}")
+    print(f"{GREEN}  python lucidx.py          {GRAY}# Launch interactive menu{RESET}")
+    print(f"{GREEN}  python lucidx.py --help   {GRAY}# Show this help message{RESET}")
+    print(f"{GREEN}  python lucidx.py --version{GRAY}# Show version information{RESET}\n")
+    
+    print(f"{WHITE}For more information, visit: {VALUE}https://github.com/VritraSecz/LucidX{RESET}")
+
+def parse_arguments():
+    """Parse command line arguments"""
+    args = sys.argv[1:]  # Remove script name
+    
+    # Check if more than one argument is provided
+    if len(args) > 1:
+        print(f"{RED}[!] Error: Multiple arguments detected.{RESET}")
+        print(f"{WHITE}Please use only one argument at a time.{RESET}")
+        print(f"{WHITE}Use 'python lucidx.py --help' for usage information.{RESET}")
+        sys.exit(1)
+    
+    # Handle single argument
+    if len(args) == 1:
+        arg = args[0].lower()
+        
+        if arg in ['--help', '-h']:
+            show_help()
+            sys.exit(0)
+        elif arg in ['--version', '-v']:
+            show_version()
+            sys.exit(0)
+        else:
+            print(f"{RED}[!] Error: Unknown argument '{args[0]}'{RESET}")
+            print(f"{WHITE}Use 'python lucidx.py --help' for available options.{RESET}")
+            sys.exit(1)
+    
+    # No arguments - proceed with interactive menu
+    return True
 
 def lucidx_main_menu():
 
@@ -70,4 +131,7 @@ def lucidx_main_menu():
             print(GRAY + "! Invalid option. Please try again.\n")
 
 if __name__ == "__main__":
-    lucidx_main_menu()
+    # Parse command line arguments first
+    if parse_arguments():
+        # No arguments provided, launch interactive menu
+        lucidx_main_menu()

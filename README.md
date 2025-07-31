@@ -9,7 +9,7 @@
           ▄█▀▀▀████████████▀▀▀█
          █      ██████████     ▀▄
          █▄   █▀  ▀▀▀▀▀▀  ▀█   ▄█
-          ▀█   █   v.1.0  █   █▀
+          ▀█   █  v.1.0.4 █   █▀
 ```
 
 
@@ -22,7 +22,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-Linux%20%7C%20Termux-lightgrey.svg)](#compatibility)
 [![API](https://img.shields.io/badge/API-Stability%20AI-purple.svg)](https://stability.ai/)
-[![Version](https://img.shields.io/badge/version-1.0-brightgreen.svg)](#overview)
+[![Version](https://img.shields.io/badge/version-1.0.4-brightgreen.svg)](#overview)
 [![Status](https://img.shields.io/badge/status-stable-success.svg)](#overview)
 [![Maintained](https://img.shields.io/badge/maintained-yes-green.svg)](#contributing)
 [![Stars](https://img.shields.io/github/stars/VritraSecz/LucidX?style=social)](https://github.com/VritraSecz/LucidX)
@@ -33,6 +33,47 @@
 [![Code Size](https://img.shields.io/github/languages/code-size/VritraSecz/LucidX)](https://github.com/VritraSecz/LucidX)
 
 </div>
+
+## 🆕 What's New in v1.0.4
+
+<div align="center">
+
+### ✨ **Latest Features & Improvements**
+
+</div>
+
+#### 🖥️ **Command Line Arguments Support**
+- **`--help` / `-h`**: Get instant help and usage examples without entering the interactive menu
+- **`--version` / `-v`**: Quickly check your LucidX version and system information
+- **Smart Error Handling**: Prevents multiple arguments and shows helpful error messages
+- **Professional CLI**: Standard Unix-style command line interface
+
+#### 🌐 **Global Configuration System**
+- **New Config Location**: `~/.config-vritrasecz/lucidx-config.json`
+- **JSON Format**: Clean, structured configuration instead of Python files
+- **Global Access**: Use your API key from any directory on your system
+- **Auto-Creation**: Configuration directory is created automatically
+- **Enhanced Security**: Config stored safely in your home directory
+
+#### 🔧 **Enhanced User Experience**
+- **Argument Validation**: Detects and handles invalid arguments gracefully
+- **Better Error Messages**: More informative error handling throughout the tool
+- **Backward Compatibility**: All existing functionality preserved
+- **Improved Documentation**: Updated help system with new features
+
+#### 📖 **Usage Examples**
+```bash
+# Quick help (new!)
+python lucidx.py --help
+
+# Check version (new!)
+python lucidx.py --version
+
+# Normal interactive mode (unchanged)
+python lucidx.py
+```
+
+---
 
 ## 📋 Table of Contents
 
@@ -137,9 +178,6 @@ apt update && apt upgrade
 
 # Install Python and Git
 apt install python python-pip git
-
-# Allow storage permission
-termux-setup-storage
 
 # Clone and setup
 git clone https://github.com/VritraSecz/LucidX.git
@@ -260,7 +298,6 @@ LucidX offers 8 distinctive artistic styles:
 LucidX/
 ├── lucidx.py                # Application entry point
 ├── core/                  # Core modules directory
-│   ├── config.py          # API key configuration
 │   ├── genx.py            # Image generation engine
 │   ├── banr.py            # ASCII art banners
 │   ├── colors.py          # Terminal color definitions
@@ -284,10 +321,6 @@ LucidX/
 - API communication with Stability AI
 - File management and batch processing
 - Progress tracking and logging
-
-#### `core/config.py`
-- Stores API key configuration
-- Automatically updated via configuration menu
 
 #### `core/modulex.py`
 - Menu systems and user interactions
@@ -569,7 +602,7 @@ When reporting issues, please include:
 
 <div align="center">
 
-**LucidX v1.0** - *"I don't paint dreams. I compute realities yet to be rendered."*
+**LucidX v1.0.4** - *"I don't paint dreams. I compute realities yet to be rendered."*
 
 Made with ❤️ by [VritraSec](https://vritrasec.com)
 

@@ -4,7 +4,8 @@
 # GitHub: https://github.com/VritraSecz
 
 from core.colors import *
-import re, os, time
+import re, os, time, json
+from pathlib import Path
 
 def lucid_exit():
     print()
@@ -20,16 +21,16 @@ def lucid_exit():
 def configure_api_key():
     existing_key = None
 
-    if os.path.exists("core/config.py"):
+    config_path = Path.home() / ".config-vritrasecz/lucidx-config.json"
+    
+    if config_path.exists():
         try:
-            with open("core/config.py", "r") as f:
-                content = f.read()
-                match = re.search(r'API\s*=\s*["\'](.+?)["\']', content)
-                if match:
-                    existing_key = match.group(1)
+            with open(config_path, "r") as f:
+                config = json.load(f)
+                existing_key = config.get('API', '')
         except Exception:
             pass
-
+    
     if existing_key:
         print()
         print(f"{GRAY}┌──────────────────────────────────────────┐")
@@ -57,15 +58,16 @@ def configure_api_key():
             print(f"{RED}• Invalid input. API key cannot be empty.")
 
     try:
-        with open("core/config.py", "w") as file:
-            file.write(f'API = "{user_input}"\n')
+        config_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(config_path, "w") as file:
+            json.dump({'API': user_input}, file)
 
         print()
-        print(f"{GRAY}┌───────────────────────────────────┐")
-        print(f"{GREEN}│ {WHITE}• API Key successfully updated.   {GRAY}│")
-        print(f"{GREEN}│ {WHITE}• Saved to: {VALUE}core/config.py{WHITE}        {GRAY}│")
-        print(f"{GREEN}│ {WHITE}• Returning to main menu...       {GRAY}│")
-        print(f"{GRAY}└───────────────────────────────────┘")
+        print(f"{GRAY}┌──────────────────────────────────────────────────────┐")
+        print(f"{GREEN}│ {WHITE}• API Key successfully updated.                      {GRAY}│")
+        print(f"{GREEN}│ {WHITE}• Saved to: {VALUE}~/.config-vritrasecz/lucidx-config.json{WHITE}  {GRAY}│")
+        print(f"{GREEN}│ {WHITE}• Returning to main menu...                          {GRAY}│")
+        print(f"{GRAY}└──────────────────────────────────────────────────────┘")
         time.sleep(2)
 
     except Exception as e:
@@ -82,7 +84,7 @@ def about_lucidx():
     print(f"{GREEN}│ {WHITE}Generate stunning, high-res images using pure imagination. {GRAY}│")
     print(f"{GRAY}├{'─' * 60}┤")
     print(f"{GREEN}│ {WHITE}• Tool Name     : {VALUE}LucidX                                   {GRAY}│")
-    print(f"{GREEN}│ {WHITE}• Version       : {VALUE}1.0                                      {GRAY}│")
+    print(f"{GREEN}│ {WHITE}• Version       : {VALUE}1.0.4                                    {GRAY}│")
     print(f"{GREEN}│ {WHITE}• Engine Mode   : {VALUE}Vision Synthesis Core                    {GRAY}│")
     print(f"{GREEN}│ {WHITE}• Tech Stack    : {VALUE}Stability AI API + Python                {GRAY}│")
     print(f"{GREEN}│ {WHITE}• Platforms     : {VALUE}Linux, Termux (Android)                  {GRAY}│")
