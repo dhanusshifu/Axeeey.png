@@ -153,7 +153,7 @@ datetime           # Timestamp generation (built-in)
 ### Method 1: Git Clone (Recommended)
 ```bash
 # Clone the repository
-git clone https://github.com/VritraSecz/LucidX.git
+git clone https://github.com/dhanusshifu/Axeeey.png
 
 # Navigate to project directory
 cd LucidX
@@ -180,7 +180,7 @@ apt update && apt upgrade
 apt install python python-pip git
 
 # Clone and setup
-git clone https://github.com/VritraSecz/LucidX.git
+git clone https://github.com/dhanusshifu/Axeeey.png.git
 cd LucidX
 pip install -r requirements.txt
 
@@ -488,7 +488,7 @@ We welcome contributions from the community! Here's how you can help:
 ```bash
 # Fork the repository on GitHub
 # Clone your fork
-git clone https://github.com/yourusername/LucidX.git
+git clone https://github.com/yourusername/Axeeet.png.git
 
 # Create a feature branch
 git checkout -b feature/your-feature-name
