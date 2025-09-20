@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-# Author: Alex a.k.a. VritraSec
+# Author: @ftfarsan
 # Project: LucidX — AI-Powered Image Synth Engine
-# GitHub: https://github.com/VritraSecz
 
 from datetime import datetime
 from time import sleep
