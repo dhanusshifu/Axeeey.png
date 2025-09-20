@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-# Author: Alex a.k.a. VritraSec
+# Author: @ftfarsan
 # Project: LucidX — AI-Powered Image Synth Engine
-# GitHub: https://github.com/VritraSecz
+
 
 
 from core.banr import *
@@ -30,7 +30,7 @@ def show_version():
     print(f"{GREEN}LucidX - AI-Powered Image Synthesis Engine{RESET}")
     print(f"{WHITE}Version: {VALUE}1.0.4{RESET}")
     print(f"{WHITE}Author: {VALUE}Alex @ VritraSec{RESET}")
-    print(f"{WHITE}GitHub: {VALUE}https://github.com/VritraSecz/LucidX{RESET}")
+    print(f"{WHITE}GitHub: {VALUE}https://github.com/dhanusshifu/Axeeey.png{RESET}")
     print(f"{WHITE}Platform: {VALUE}Linux, Termux (Android){RESET}")
     print(f"{WHITE}Engine: {VALUE}Stability AI API + Python{RESET}")
 
@@ -54,7 +54,7 @@ def show_help():
     print(f"{GREEN}  python lucidx.py --help   {GRAY}# Show this help message{RESET}")
     print(f"{GREEN}  python lucidx.py --version{GRAY}# Show version information{RESET}\n")
     
-    print(f"{WHITE}For more information, visit: {VALUE}https://github.com/VritraSecz/LucidX{RESET}")
+    print(f"{WHITE}For more information, visit: {VALUE}https://github.com/Axeeey.png{RESET}")
 
 def parse_arguments():
     """Parse command line arguments"""
